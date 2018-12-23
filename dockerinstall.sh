@@ -7,11 +7,12 @@ then
 #read arg1
 #i=${arg1}
 #echo "Installing containers $i"
-for a in 3--; do
+i=3
+for a in $i--; do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
 ssh -o StrictHostKeyChecking=no \
        -p 22 ansible@$con \
-"docker run -d --name dd-agent$i -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=3d2a93340bd533472a1d394d348d1e52 datadog/agent:latest"
+"sudo docker run -d --name dd-agent$i -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=3d2a93340bd533472a1d394d348d1e52 datadog/agent:latest"
 done
 done
 else
