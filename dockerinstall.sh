@@ -1,7 +1,7 @@
 #!/bin/bash
 function container
 {
-if [ -e /home/ansible/ds/container.txt ]
+if [ -e /home/ansible/ds/ddocker/container.txt ]
 then
 #echo "How many containers do you want to install in each host"
 #read arg1
@@ -20,7 +20,7 @@ fi
 }
 function vm
 {
-for list in $(cat /home/ansible/ds/serverlist.txt); do
+for list in $(cat /home/ansible/ds/ddocker/serverlist.txt); do
 scp /home/ansible/ds/script.sh ansible@$list:/home/ansible/.
 ssh -o StrictHostKeyChecking=no \
      -p ansible@$list "chmod 755 /home/ansible/script.sh;cd /home/ansible;./script.sh"
