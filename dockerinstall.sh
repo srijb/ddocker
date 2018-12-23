@@ -23,9 +23,9 @@ fi
 function vm
 {
 for list in $(cat /home/ansible/ds/ddocker/serverlist.txt); do
-scp /home/ansible/ds/ddocker/script.sh ansible@$list:/home/ansible/.
+scp -r /home/ansible/ds/ddocker/script.sh ansible@$list:/home/ansible/.
 ssh -o StrictHostKeyChecking=no \
-     -p ansible@$list "chmod 755 /home/ansible/script.sh;cd /home/ansible;./script.sh"
+     -p 22 ansible@$list "chmod 755 /home/ansible/script.sh;cd /home/ansible;./script.sh"
 done
 }
 case $value in
