@@ -8,7 +8,7 @@ then
 #i=${arg1}
 #echo "Installing containers $i"
 i=1
-while [ $i <= 3 ] 
+while [ $i -lt 4 ] 
 do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
 ssh -o StrictHostKeyChecking=no \
