@@ -1,3 +1,4 @@
+#!/bin/bash
 function container
 {
 if [ -e /home/ansible/ds/container.txt ]
