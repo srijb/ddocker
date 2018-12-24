@@ -6,9 +6,9 @@ then
 #echo "How many containers do you want to install in each host"
 #read arg1
 #i=${arg1}
-#echo "Installing containers $i"
 i=1
 a=$(cat /home/ansible/ds/ddocker/number.txt)
+echo "Installing $a containers"
 while [ $i -lt $a ] 
 do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
