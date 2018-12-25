@@ -8,7 +8,7 @@ then
 #i=${arg1}
 i=1
 a=$(cat /home/ansible/ds/ddocker/number.txt)
-echo "Installing ($a-1) containers"
+echo "Installing $($a-1) containers"
 while [ $i -lt $a ] 
 do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
@@ -16,7 +16,7 @@ ssh -o StrictHostKeyChecking=no \
        -p 22 ansible@$con \
 "sudo docker run -d --name dd-agent$i -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=3d2a93340bd533472a1d394d348d1e52 datadog/agent:latest"
 done
-b=$(sudo docker ps -a|awk '{printf $7}')
+b=dd-agent$i
 echo "Installed $i container its name $b"
 i=$[$i+1]
 done
