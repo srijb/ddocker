@@ -8,7 +8,8 @@ then
 #i=${arg1}
 i=1
 a=$(cat /home/ansible/ds/ddocker/number.txt)
-echo "Installing $($a-1) containers"
+c=$(exp $a-1)
+echo "Installing $c containers"
 while [ $i -lt $a ] 
 do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
