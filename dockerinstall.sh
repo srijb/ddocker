@@ -13,9 +13,9 @@ echo "Installing $c containers"
 while [ $i -lt $a ] 
 do
 for con in $(cat /home/ansible/ds/ddocker/container.txt); do
+scp -r /home/ansible/ds/ddocker/container.sh ansible@$con:/home/ansible/.
 ssh -o StrictHostKeyChecking=no \
-       -p 22 ansible@$con \
-"sudo docker run -d --name dd-agent$i -v /var/run/docker.sock:/var/run/docker.sock:ro -v /proc/:/host/proc/:ro -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro -e DD_API_KEY=3d2a93340bd533472a1d394d348d1e52 datadog/agent:latest"
+       -p 22 ansible@$con \ "chmod -R 755 /home/ansible/.;./home/ansible/container.sh"
 done
 b=dd-agent$i
 echo "Installed $i container its name $b"
